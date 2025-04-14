@@ -2,7 +2,6 @@
 import {
   Card,
   CardContent,
-
   CardFooter,
   CardHeader,
   CardTitle,
@@ -17,10 +16,8 @@ import { Button } from "../../../components/button";
 import {
   Form,
   FormControl,
-
   FormField,
   FormItem,
- 
   FormMessage,
 } from "../../../components/form";
 import { Input } from "../../../components/input";
@@ -178,6 +175,7 @@ export default function SignIn() {
 
   async function signInWithGoogle() {
     try {
+      setLoading(true);
       const { data, error } = await authClient.signIn.social(
         {
           provider: "google",
@@ -200,6 +198,8 @@ export default function SignIn() {
       );
     } catch (error: unknown) {
       toast.error("Failed to sign in with Google.");
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -359,8 +359,14 @@ export default function SignIn() {
           onClick={signInWithGoogle}
           disabled={loading}
         >
-          <GoogleIcon />
-          Continue with Google
+          {loading ? (
+            <span>Signing In...</span>
+          ) : (
+            <>
+              <GoogleIcon />
+              Continue with Google
+            </>
+          )}
         </Button>
         {/* <Button
           type="button"
