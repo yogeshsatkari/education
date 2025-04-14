@@ -1,103 +1,173 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { Button } from "../components/button";
+import Link from "next/link";
+import { CheckCircle, ArrowRight, GraduationCap, Heart } from "lucide-react";
+
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Yogesh ji, get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      {/* Navbar */}
+      <nav className="bg-white border-b w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap justify-between items-center h-16 py-4">
+            <div className="flex items-center space-x-2">
+              <GraduationCap className="h-8 w-8 text-blue-700" />
+              <span className="text-xl font-bold text-gray-800">
+                Swarn Foundation
+              </span>
+            </div>
+            <div className="flex items-center gap-4">
+              <Link href="/sign-in">
+                <Button
+                  variant="ghost"
+                  className="relative group px-5 py-2 text-sm font-medium text-gray-700 border border-transparent"
+                >
+                  Sign In
+                  <span className="absolute bottom-0 left-1/2 w-0 group-hover:w-full h-0.5 bg-blue-600 transition-all duration-400 transform -translate-x-1/2 rounded-full"></span>
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
+      </nav>
+
+      <main>
+        {/* Hero Section */}
+        <section className="bg-gradient-to-b from-blue-50 to-white w-full">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-22">
+            <div className="text-center">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-gray-900 leading-tight">
+                Empowering Dreams Through Education
+              </h1>
+              <p className="mt-6 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+                Every child deserves access to quality education. Be a part of a
+                mission that nurtures potential and builds a brighter future.
+              </p>
+              <div className="mt-10">
+                <Link href="/sign-up">
+                  <Button className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full shadow-lg">
+                    Make a Difference
+                    <Heart className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Impact Stats */}
+        <section className="bg-white py-10 border-t border-b">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center">
+              {stats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="p-6 rounded-xl bg-blue-50 shadow-md hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="text-4xl font-bold text-blue-700">
+                    {stat.value}
+                  </div>
+                  <div className="mt-2 text-gray-700 text-lg">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Features */}
+        <section className="bg-gray-50 py-24 w-full">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl font-bold text-gray-900">
+                How We Make a Difference
+              </h2>
+              <p className="mt-4 text-lg text-gray-600">
+                Each contribution creates lasting educational impact.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-xl shadow hover:shadow-lg transition duration-300"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <CheckCircle className="h-6 w-6 text-blue-600" />
+                    <h3 className="text-xl font-semibold text-gray-900">
+                      {feature.title}
+                    </h3>
+                  </div>
+                  <p className="text-gray-600">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="bg-blue-600 w-full">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-white">
+                Ready to Change Lives?
+              </h2>
+              <p className="mt-4 text-lg text-blue-100">
+                A single action today can impact generations.
+              </p>
+              <div className="mt-8">
+                <Link href="/sign-up">
+                  <Button className="text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 bg-white text-blue-700 hover:bg-blue-100 rounded-full shadow-md">
+                    Make a Difference
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+
+      {/* Footer */}
+      <footer className="bg-white border-t w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center">
+              <GraduationCap className="h-6 w-6 text-blue-600" />
+              <span className="ml-2 text-lg font-semibold text-gray-800">
+                Swarn Foundation
+              </span>
+            </div>
+            <p className="text-gray-500 text-sm md:text-base text-center">
+              © 2025 Swarn Foundation. All rights reserved.
+            </p>
+          </div>
+        </div>
       </footer>
-    </div>
+    </>
   );
 }
+
+const features = [
+  {
+    title: "Education Support",
+    description:
+      "We cover tuition, books, uniforms, and more to ensure no child is left behind.",
+  },
+  {
+    title: "Mentorship Program",
+    description:
+      "Dedicated mentors guide students through academic and personal growth.",
+  },
+  {
+    title: "Progress Tracking",
+    description:
+      "We monitor and report every milestone so donors see real-world impact.",
+  },
+];
+
+const stats = [
+  { value: "1000+", label: "Students Supported" },
+  { value: "50+", label: "Partner Schools" },
+  { value: "95%", label: "Success Rate" },
+];
