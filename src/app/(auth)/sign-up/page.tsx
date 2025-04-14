@@ -62,8 +62,8 @@ export default function SignUp() {
             try {
               await sendEmail({
                 to: email,
-                subject: "Welcome to Education!",
-                text: "Thank you for signing up!!",
+                subject: "Welcome to Swarn Foundation",
+                text: "Thank you for signing up!",
               });
             } catch (error) {
               console.log("error: ", error);

@@ -64,11 +64,11 @@ export const auth = betterAuth({
 
       await sendEmail({
         to: user.email,
-        subject: "Verify your email address - Education",
+        subject: "Verify your email address - Swarn Foundation",
         text: `Click the link to verify your email: ${verificationUrl}`,
         html: `
           <div>
-            <h1>Verify your email address - Education</h1>
+            <h1>Verify your email address - Swarn Foundation</h1>
             <p>Click the link below to verify your email:</p>
             <a href="${verificationUrl}">${verificationUrl}</a>
           </div>

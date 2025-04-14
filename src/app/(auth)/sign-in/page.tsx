@@ -330,7 +330,7 @@ export default function SignIn() {
             <span className="px-2 text-muted-foreground">Or</span>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-3">
+        {/* <div className="grid grid-cols-2 gap-3">
           <Button
             type="button"
             variant="outline"
@@ -351,8 +351,8 @@ export default function SignIn() {
             <AppleIcon />
             Apple
           </Button>
-        </div>
-        {/* <Button
+        </div> */}
+        <Button
           type="button"
           variant="outline"
           className="w-full bg-white hover:bg-gray-50 text-black dark:text-black border border-gray-300 flex items-center justify-center gap-2"
@@ -362,7 +362,7 @@ export default function SignIn() {
           <GoogleIcon />
           Continue with Google
         </Button>
-        <Button
+        {/* <Button
           type="button"
           variant="outline"
           className="w-full bg-white hover:bg-gray-50 text-black dark:text-black border border-gray-300 flex items-center justify-center gap-2"
